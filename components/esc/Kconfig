@@ -1,0 +1,37 @@
+menu "ESC PWM Configuration"
+    	menu "ESC Configuration Options"
+        config ESC_MIN_VALUE
+            int "Min value"
+            default 1050
+        config ESC_MAX_VALUE
+            int "Max PWM Value"
+            default 2000
+        config ESC_ARM_VALUE
+            int "Arm Value"
+            default 1000
+        config THROTTLE_MIN_VALUE
+            int "Minimum Throttle"
+            default 0
+        config THROTTLE_MAX_VALUE
+            int "Maximum Throttle"
+            default 1
+        config ROLL_MIN_VALUE
+            int "Minimum Roll (Left)"
+            default -1
+        config ROLL_MAX_VALUE
+            int "Maximum Roll (Right)"
+            default 1
+        config PITCH_MIN_VALUE
+            int "Minimum Pitch (Upward)"
+            default -1
+        config PITCH_MAX_VALUE
+            int "Maximum Pitch (Downward)"
+            default 1
+        config YAW_MIN_VALUE
+            int "Minimum Yaw (Clockwise)"
+            default -1
+        config YAW_MAX_VALUE
+            int "Maximum Roll (Counter Clockwise)"
+            default 1
+        endmenu
+endmenu

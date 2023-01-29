@@ -1,0 +1,51 @@
+menu "Copter Configuration"
+    choice
+        prompt "Select Copter Configuration"
+        default HEXACOPTER
+        config HEXACOPTER
+            bool "Hexacopter Configuration"
+        config QUADCOPTER
+            bool "Quadcopter Configuration"
+    endchoice
+
+    if HEXACOPTER
+        menu "Hexacopter Motor Channel Configuration"
+            config M1
+                int "Motor 1"
+                default 0
+            config M2
+                int "Motor 2"
+                default 1
+            config M3
+                int "Motor 3"
+                default 2
+            config M4
+                int "Motor 4"
+                default 3
+            config M5
+                int "Motor 5"
+                    default 4
+            config M6
+                int "Motor 6"
+                default 5
+        endmenu
+    endif
+
+    if QUADCOPTER
+        menu "Quadcopter Motor Channel Configuration"
+            config M1
+                int "Motor 1"
+                default 0
+            config M2
+                int "Motor 2"
+                default 1
+            config M3
+                int "Motor 3"
+                default 2
+            config M4
+                int "Motor 4"
+                default 3
+        endmenu
+    endif
+
+endmenu

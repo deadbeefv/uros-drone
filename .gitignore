@@ -1,0 +1,9 @@
+#Ignore the build folder
+build/
+
+#ignore vscode folder
+.vscode
+
+#ignore sdkconfig files
+sdkconfig
+sdkconfig.old

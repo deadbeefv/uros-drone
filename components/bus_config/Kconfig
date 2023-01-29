@@ -1,0 +1,26 @@
+menu "I2C Bus Configuration"
+    menu "Sensor Bus Configuration"
+        config BUS0_I2C_MASTER_SDA_IO
+            int "SDA Pin"
+            default 21
+        config BUS0_I2C_MASTER_SCL_IO
+            int "SCL Pin"
+            default 22
+        config BUS0_I2C_MASTER_FREQ_HZ
+            int "Bus Speed (Hz)"
+            default 400000
+
+    endmenu
+
+    menu "Actuator Bus Configuration"
+        config BUS1_I2C_MASTER_SDA_IO
+            int "SDA Pin"
+            default 17
+        config BUS1_I2C_MASTER_SCL_IO
+            int "SCL Pin"
+            default 16
+        config BUS1_I2C_MASTER_FREQ_HZ
+            int "Bus Speed (Hz)"
+            default 400000
+    endmenu
+endmenu
