@@ -118,7 +118,7 @@ void micro_ros_task(void * arg)
 
 	// create node
 	rcl_node_t node;
-	RCCHECK(rclc_node_init_default(&node, "turtle_01", "", &support));
+	RCCHECK(rclc_node_init_default(&node, CONFIG_NODE_NAME, CONFIG_NODE_NAMESPACE, &support));
 	
 	//publisher with best effort transport
 	RCCHECK(rclc_publisher_init_best_effort(

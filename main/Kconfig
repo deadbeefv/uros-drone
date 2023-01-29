@@ -1,0 +1,9 @@
+menu "Uros-drone Configuration"
+    config NODE_NAME
+        string "Drone Node Name"
+        default "winged_turtle_01"
+    
+    config NODE_NAMESPACE
+        string "Drone Node Namespace"
+        default ""
+endmenu
