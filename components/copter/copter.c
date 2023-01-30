@@ -167,7 +167,13 @@
             return ESP_FAIL;
         }
 
-        esp_err_t ret = gpio_set_level(OE_PIN, HIGH);
+        esp_err_t ret = set_throttle_copter(0);
+        if (ret != ESP_OK){
+            ESP_LOGE("Could not lower throttle to zero");
+            reeturn ret;
+        }
+        
+        ret = gpio_set_level(OE_PIN, HIGH);
         if (ret != ESP_OK){
             ESP_LOGE(TAG, "Could Not Set Level HIGH on Output Enable Pin %d", OE_PIN);
             return ret;
@@ -382,7 +388,13 @@
             return ESP_FAIL;
         }
 
-        esp_err_t ret = gpio_set_level(OE_PIN, HIGH);
+        esp_err_t ret = set_throttle_copter(0);
+        if (ret != ESP_OK){
+            ESP_LOGE("Could not lower throttle to zero");
+            reeturn ret;
+        }
+
+        ret = gpio_set_level(OE_PIN, HIGH);
         if (ret != ESP_OK){
             ESP_LOGE(TAG, "Could Not Set Level HIGH on Output Enable Pin %d", OE_PIN);
             return ret;
