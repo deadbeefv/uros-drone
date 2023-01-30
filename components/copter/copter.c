@@ -169,8 +169,8 @@
 
         esp_err_t ret = set_throttle_copter(0);
         if (ret != ESP_OK){
-            ESP_LOGE("Could not lower throttle to zero");
-            reeturn ret;
+            ESP_LOGE(TAG, "Could not lower throttle to zero");
+            return ret;
         }
         
         ret = gpio_set_level(OE_PIN, HIGH);
@@ -390,8 +390,8 @@
 
         esp_err_t ret = set_throttle_copter(0);
         if (ret != ESP_OK){
-            ESP_LOGE("Could not lower throttle to zero");
-            reeturn ret;
+            ESP_LOGE(TAG, "Could not lower throttle to zero");
+            return ret;
         }
 
         ret = gpio_set_level(OE_PIN, HIGH);
