@@ -6,6 +6,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_log.h"
+#include "sdkconfig.h"
 
 #include "imu.h"
 #include "copter.h"
@@ -133,12 +134,6 @@ void micro_ros_task(void * arg)
 		ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int32),
 		"throttle"));
 
-	// RCCHECK(rclc_subscription_init_default(
-	// 	&state_estimator_subscriber,
-	// 	&node,
-	// 	ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, Imu),
-	// 	"sensors/imu"));
-
 	// create timer,
 	rcl_timer_t timer3;
 	const unsigned int timer3_timeout = 10;
@@ -161,12 +156,6 @@ void micro_ros_task(void * arg)
 		&subscriber_callback,
 		ON_NEW_DATA));
 
-	// RCCHECK(rclc_executor_add_subscription(
-	// 	&executor, 
-	// 	&state_estimator_subscriber, 
-	// 	&recv_imu_data,
-	// 	&state_estimator_callback,
-	// 	ON_NEW_DATA));
 
 	msg.data = 0;
 
@@ -218,7 +207,6 @@ void app_main(void)
 			sleep(1000);
 		}
 	}
-	// mpu6500_calibrate_acce_gyro();
 
 	init_vehicle();
 
