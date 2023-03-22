@@ -167,6 +167,13 @@
             return ESP_FAIL;
         }
 
+        hexacopter_config_t * hexacopter = (hexacopter_config_t *) copter;
+        
+        if (!hexacopter->is_armed){
+            ESP_LOGI(TAG, "Cannot disarm disarmed motors");
+            return ESP_OK;
+        }
+
         esp_err_t ret = set_throttle_copter(0);
         if (ret != ESP_OK){
             ESP_LOGE(TAG, "Could not lower throttle to zero");
@@ -178,13 +185,6 @@
             ESP_LOGE(TAG, "Could Not Set Level HIGH on Output Enable Pin %d", OE_PIN);
             return ret;
         }  
-
-        hexacopter_config_t * hexacopter = (hexacopter_config_t *) copter;
-        
-        if (!hexacopter->is_armed){
-            ESP_LOGI(TAG, "Cannot disarm disarmed motors");
-            return ESP_OK;
-        }
 
         ret = pca9685_set_pwm_values(hexacopter->M1.channel, MOTOR_COUNT, disarm_values);
         if (ret != ESP_OK){
@@ -388,6 +388,13 @@
             return ESP_FAIL;
         }
 
+        quadcopter_config_t * quadcopter = (quadcopter_config_t *) copter;
+        
+        if (!quadcopter->is_armed){
+            ESP_LOGI(TAG, "Cannot disarm disarmed motors");
+            return ESP_OK;
+        }
+
         esp_err_t ret = set_throttle_copter(0);
         if (ret != ESP_OK){
             ESP_LOGE(TAG, "Could not lower throttle to zero");
@@ -400,12 +407,6 @@
             return ret;
         }  
 
-        quadcopter_config_t * quadcopter = (quadcopter_config_t *) copter;
-        
-        if (!quadcopter->is_armed){
-            ESP_LOGI(TAG, "Cannot disarm disarmed motors");
-            return ESP_OK;
-        }
 
         ret = pca9685_set_pwm_values(quadcopter->M1.channel, MOTOR_COUNT, disarm_values);
         if (ret != ESP_OK){
