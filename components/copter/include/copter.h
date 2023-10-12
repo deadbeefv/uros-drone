@@ -48,14 +48,6 @@
 extern "C" {
 #endif
 
-// #ifdef CONFIG_HEXACOPTER
-// #include "hexacopter.h"
-// #endif
-
-// #ifdef CONFIG_QUADCOPTER
-// #include "quadcopter.h"
-// #endif
-
 #ifdef __cplusplus
 }
 #endif
