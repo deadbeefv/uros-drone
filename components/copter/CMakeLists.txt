@@ -1,4 +1,4 @@
 idf_component_register(SRCS "copter.c"
                     INCLUDE_DIRS "include"
-                    REQUIRES esc hexacopter quadcopter)
+                    REQUIRES esc, hexacopter, quadcopter)
 
