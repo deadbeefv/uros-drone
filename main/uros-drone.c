@@ -208,8 +208,55 @@ void app_main(void)
 		}
 	}
 
-	init_vehicle();
+	ret = init_vehicle();
+	if (ret != ESP_OK){
+		ESP_LOGI(TAG, "Successfully Initialize Vehicle");
+	} else {
+		ESP_LOGE(TAG, "Failed to Initialize Vehicle. Quitting");
+	}
 
+	//Calibrating ESC
+	ret = calibrate_escs();
+	if (ret != ESP_OK){
+		ESP_LOGI(TAG, "Successfully Calibrated ESCs");
+	} else {
+		ESP_LOGE(TAG, "Failed to Calibrate ESCs");
+	}
+
+	//Arming Motors
+	ret = arm_motors()
+		if (ret != ESP_OK){
+		ESP_LOGI(TAG, "Successfully Armed Motors");
+	} else {
+		ESP_LOGE(TAG, "Failed to Arm Motors");
+	}
+
+	//Set throttle to 10% for 15 seconds
+	ret = set_throttle_copter(0.1)
+	if (ret != ESP_OK){
+		ESP_LOGI(TAG, "Successfully Set Throttle to 10 percent");
+	} else {
+		ESP_LOGE(TAG, "Failed to Set Throttle");
+	}
+
+	//sleep for 15 seconds
+	sleep(150);
+
+	//Set throttle to 0%
+	ret = set_throttle_copter(0.0)
+	if (ret != ESP_OK){
+		ESP_LOGI(TAG, "Successfully Set Throttle to 0 percent");
+	} else {
+		ESP_LOGE(TAG, "Failed to Set Throttle");
+	}
+
+	//Disarming Motors
+	ret = disarm_motors()
+	if (ret != ESP_OK){
+		ESP_LOGI(TAG, "Successfully Armed Motors");
+	} else {
+		ESP_LOGE(TAG, "Failed to Arm Motors");
+	}
     //pin micro-ros task in APP_CPU to make PRO_CPU to deal with wifi:
     xTaskCreate(micro_ros_task,
             "uros_task",
