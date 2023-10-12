@@ -37,6 +37,8 @@
  * BSD Licensed as described in the file LICENSE
  */
 
+/*
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -496,3 +498,5 @@
     }
     
 #endif
+
+*/

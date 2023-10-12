@@ -7,3 +7,6 @@ build/
 #ignore sdkconfig files
 sdkconfig
 sdkconfig.old
+
+#ignore dependencies files
+dependencies.lock

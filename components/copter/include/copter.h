@@ -26,17 +26,17 @@
  */
 
 /**
- * @file hexacopter.h
- * @defgroup hexacopter configuration
+ * @file copter.h
+ * @defgroup copter configuration
  * @{
  *
- * ESP-IDF component for hexacopter configuration
+ * ESP-IDF component for copter configuration
  *
  * Copyright (c) 2022 Machar Kook <jkook2012@gmail.com>
  *
  * BSD Licensed as described in the file LICENSE
  */
-#ifndef _COPTER_H__
+#ifndef __COPTER_H__
 #define __COPTER_H__
 
 #include <stdbool.h>
@@ -48,69 +48,13 @@
 extern "C" {
 #endif
 
-typedef struct Hexacopter {
-    motor_config_t M1;
-    motor_config_t M2;
-    motor_config_t M3;
-    motor_config_t M4;
-    motor_config_t M5;
-    motor_config_t M6;
-    bool is_armed;
-} hexacopter_config_t;
+#ifdef CONFIG_HEXACOPTER
+#include "hexacopter.h"
+#endif
 
-typedef struct Quadcopter {
-    motor_config_t M1;
-    motor_config_t M2;
-    motor_config_t M3;
-    motor_config_t M4;
-    bool is_armed;
-} quadcopter_config_t;
-
-typedef void *copter_handle_t;
-
-/**
- * @brief Initialize Vehicle configuration and communication bus
- *
- * @return `ESP_OK` on success
- */
-esp_err_t init_vehicle(void);
-
-/**
- * @brief Deinitialize Vehicle configuration and communication bus
- *
- * @return `ESP_OK` on success
- */
-void deinit_vehicle(void);
-
-/**
- * @brief Log copter information to serial console
-*/
-void copter_info(void);
-
-/**
- * @brief Arm all Motors/ESCs
- * @return `ESP_OK` on success
- */
-esp_err_t arm_motors(void);
-
-/**
- * @brief Disarm all Motors/ESCs
- * @return `ESP_OK` on success
- */
-esp_err_t disarm_motors(void);
-
-/**
- * @brief Calibrate multiple ESCs
- * @return `ESP_OK` on success
- */
-esp_err_t calibrate_escs(void);
-
-/**
- * @brief Set single motor throttle for a copter configuration
- * @param throttle_value Array of throttle value as a percentage (each)
- * @return `ESP_OK` on success
- */
-esp_err_t set_throttle_copter(float throttle_value);
+#ifdef CONFIG_QUADCOPTER
+#include "quadcopter.h"
+#endif
 
 #ifdef __cplusplus
 }
