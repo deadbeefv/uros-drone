@@ -224,15 +224,15 @@ void app_main(void)
 	}
 
 	//Arming Motors
-	ret = arm_motors()
-		if (ret != ESP_OK){
+	ret = arm_motors();
+	if (ret != ESP_OK){
 		ESP_LOGI(TAG, "Successfully Armed Motors");
 	} else {
 		ESP_LOGE(TAG, "Failed to Arm Motors");
 	}
 
 	//Set throttle to 10% for 15 seconds
-	ret = set_throttle_copter(0.1)
+	ret = set_throttle_copter(0.1);
 	if (ret != ESP_OK){
 		ESP_LOGI(TAG, "Successfully Set Throttle to 10 percent");
 	} else {
@@ -243,7 +243,7 @@ void app_main(void)
 	sleep(150);
 
 	//Set throttle to 0%
-	ret = set_throttle_copter(0.0)
+	ret = set_throttle_copter(0.0);
 	if (ret != ESP_OK){
 		ESP_LOGI(TAG, "Successfully Set Throttle to 0 percent");
 	} else {
@@ -251,7 +251,7 @@ void app_main(void)
 	}
 
 	//Disarming Motors
-	ret = disarm_motors()
+	ret = disarm_motors();
 	if (ret != ESP_OK){
 		ESP_LOGI(TAG, "Successfully Armed Motors");
 	} else {
