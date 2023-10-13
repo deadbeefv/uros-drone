@@ -40,14 +40,6 @@
 #include "copter.h"
 
 
-#ifdef CONFIG_HEXACOPTER
-#include "hexacopter.h"
-#endif
-
-#ifdef CONFIG_QUADCOPTER
-#include "quadcopter.h"
-#endif
-/*
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -509,4 +501,3 @@
     
 #endif
 
-*/

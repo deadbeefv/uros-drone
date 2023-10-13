@@ -48,6 +48,75 @@
 extern "C" {
 #endif
 
+typedef struct Hexacopter {
+    motor_config_t M1;
+    motor_config_t M2;
+    motor_config_t M3;
+    motor_config_t M4;
+    motor_config_t M5;
+    motor_config_t M6;
+    bool is_armed;
+} hexacopter_config_t;
+
+typedef struct Quadcopter {
+    motor_config_t M1;
+    motor_config_t M2;
+    motor_config_t M3;
+    motor_config_t M4;
+    bool is_armed;
+} quadcopter_config_t;
+
+
+typedef void *copter_handle_t;
+
+/**
+ * @brief Initialize Vehicle configuration and communication bus
+ *
+ * @return `ESP_OK` on success
+ */
+esp_err_t init_vehicle(void);
+
+/**
+ * @brief Deinitialize Vehicle configuration and communication bus
+ *
+ * @return `ESP_OK` on success
+ */
+void deinit_vehicle(void);
+
+/**
+ * @brief Log copter information to serial console
+*/
+void copter_info(void);
+
+/**
+ * @brief Arm all Motors/ESCs
+ * @return `ESP_OK` on success
+ */
+esp_err_t arm_motors(void);
+
+/**
+ * @brief Disarm all Motors/ESCs
+ * @return `ESP_OK` on success
+ */
+esp_err_t disarm_motors(void);
+
+/**
+ * @brief Calibrate multiple ESCs
+ * @return `ESP_OK` on success
+ */
+esp_err_t calibrate_escs(void);
+
+/**
+ * @brief Set single motor throttle for a copter configuration
+ * @param throttle_value Array of throttle value as a percentage (each)
+ * @return `ESP_OK` on success
+ */
+esp_err_t set_throttle_copter(float throttle_value);
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifdef __cplusplus
 }
 #endif
